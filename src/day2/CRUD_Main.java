@@ -29,16 +29,26 @@ public class CRUD_Main {
 		Restaurant res = new Restaurant("Karachi sweets","Local", 4, 23);
 		idao.create(res);
 	}
+	
+	private static void deleteRestaurant() {
+		// TODO Auto-generated method stub
+		DaoInterface<Restaurant, Integer> idao = new RestaurantDao();
+		idao.delete(4);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		//showOneRestaurant();
 		
-		createNewRestaurant();
+		//createNewRestaurant();
+		
+		deleteRestaurant();
 		
 		showAllRestaurant();
 	}
+
+	
 
 	
 

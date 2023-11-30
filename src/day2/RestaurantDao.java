@@ -91,4 +91,20 @@ public class RestaurantDao implements DaoInterface<Restaurant, Integer> {
 		
 	}
 
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		String subQuery = "Delete from restaurant where restaurantId = ?";
+		try (Connection conn = JdbcUtils.buildConnection();
+				PreparedStatement pstmt = conn.prepareStatement(subQuery)){
+			pstmt.setInt(1, id);
+			int count = pstmt.executeUpdate();
+			System.out.println(count+" record deleted");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }
