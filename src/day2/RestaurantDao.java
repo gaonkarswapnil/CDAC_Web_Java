@@ -66,4 +66,29 @@ public class RestaurantDao implements DaoInterface<Restaurant, Integer> {
 		return foundRestaurant;
 	}
 
+	@Override
+	public void create(Restaurant newRestaurant) {
+		// TODO Auto-generated method stub
+		String subQuery = "insert into restaurant(restaurantId, name, cuisine, branchCount) values(?,?,?,?)";
+		try(Connection conn = JdbcUtils.buildConnection();
+				PreparedStatement pstmt= conn.prepareStatement(subQuery)) {
+			int id= newRestaurant.getRestaurantId();
+			String name = newRestaurant.getName();
+			String cuisine = newRestaurant.getCuisine();
+			int branchCount = newRestaurant.getBranchCount();
+			
+			pstmt.setInt(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, cuisine);
+			pstmt.setInt(4, branchCount);
+			
+			int count = pstmt.executeUpdate();
+			System.out.println(count+" records inserted");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

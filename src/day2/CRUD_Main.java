@@ -22,11 +22,24 @@ public class CRUD_Main {
 			System.out.println("Restaurant with this ID does not exist");
 		}
 	}
+	
+	private static void createNewRestaurant() {
+		// TODO Auto-generated method stub
+		DaoInterface<Restaurant, Integer> idao = new RestaurantDao();
+		Restaurant res = new Restaurant("Karachi sweets","Local", 4, 23);
+		idao.create(res);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//showAllRestaurant();
-		showOneRestaurant();
+		
+		//showOneRestaurant();
+		
+		createNewRestaurant();
+		
+		showAllRestaurant();
 	}
+
+	
 
 }
