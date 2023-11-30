@@ -35,6 +35,19 @@ public class CRUD_Main {
 		DaoInterface<Restaurant, Integer> idao = new RestaurantDao();
 		idao.delete(4);
 	}
+	
+	private static void updateRestaurant() {
+		// TODO Auto-generated method stub
+		DaoInterface<Restaurant, Integer> idao = new RestaurantDao();
+		Restaurant res = idao.getOne(3);
+		
+		res.setBranchCount(53);
+		res.setCuisine("Bakery");
+		
+		idao.update(res);
+		//System.out.println(res);
+	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -43,13 +56,12 @@ public class CRUD_Main {
 		
 		//createNewRestaurant();
 		
-		deleteRestaurant();
+		//deleteRestaurant();
+		
+		updateRestaurant();
 		
 		showAllRestaurant();
 	}
-
-	
-
 	
 
 }
